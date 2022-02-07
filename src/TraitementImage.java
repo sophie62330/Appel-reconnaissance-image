@@ -6,8 +6,7 @@ public class TraitementImage {
     private BufferedImage photoOriginale;
     private BufferedImage photoFinale;
 
-    public TraitementImage(String url) {
-        this.url = url;
+    public TraitementImage() {
     }
 
     public String getUrl() {
@@ -36,13 +35,13 @@ public class TraitementImage {
         this.photoFinale = photoFinale;
     }
 
-    public void lancerTraitement() throws Exception {
+    public void lancerTraitement(String url) throws Exception {
+        this.setUrl(url);
+        //on passe les param
         String[] args=new String[1];
         args[0]=this.getUrl();
         FindContours.test(args);
         this.setNbCFU(FindContours.getNbCFU());
         this.setPhotoFinale(FindContours.getImageFinale());
-
-
     }
 }
